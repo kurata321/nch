@@ -1,26 +1,26 @@
-'use client'
-
+import { headers } from 'next/headers'
 import Link from 'next/link'
 import fetch from 'node-fetch'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export const runtime = 'edge'
-export default function Threads () {
-  const [threads, setThreads] = useState<any[]>([])
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await fetch('/api/subject')
-      const data = await response.text()
-      setThreads(data.split('\n').map((sread) => sread.split('<>')))
-    }
-    fetchUsers()
-  }, [])
+
+const fetchUsers = async () => {
+  const headersList = headers()
+  const host = headersList.get('host')
+  const protocal = process?.env.NODE_ENV === 'development' ? 'http' : 'https'
+  const response = await fetch(`${protocal}://${host}/api/subject`)
+  const data = await response.text()
+  return data.split('\n').map((sread) => sread.split('<>'))
+}
+export default async function Threads () {
+  const threads = await fetchUsers()
   console.log(threads)
   return (
     <div>
       {threads?.map((thread) => (
-        <Link href={`/threads/${thread[0]}`} key={thread}>
-          <div key={thread} className={'text-sm mb-2'}>{thread[1]}</div>
+        <Link href={`/threads/${thread[0]}`} key={thread[0]}>
+          <div key={thread[0]} className={'text-sm mb-2'}>{thread[1]}</div>
         </Link>
       ))}
     </div>

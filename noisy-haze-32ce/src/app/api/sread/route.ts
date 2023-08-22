@@ -12,7 +12,7 @@ export async function POST(request: NextRequest, query: NextResponse) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'Monazilla/1.00 (Macintosh; I; PPC)',
+      'User-Agent': 'Monazilla/1.00 (nch)',
       'Connection': 'close',
       'Credentials': 'include',
       'Content-Length': '0',

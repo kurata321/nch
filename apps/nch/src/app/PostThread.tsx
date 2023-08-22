@@ -14,9 +14,9 @@ import { useState } from 'react'
 
 export const runtime = 'edge'
 
-export const PostText = () => {
+export const PostThread = () => {
   const router = useRouter()
-  const params = useParams()
+  const [subject, setSubject] = useState('')
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [response, setResponse] = useState('')
@@ -26,16 +26,16 @@ export const PostText = () => {
     const localCookie = localStorage.getItem('Cookie')
     const data = {
       bbs: 'edge',
-      key: (params.dat as string).replace(/\.dat$/, ''),
       time: '1690478222',
       submit: '書き込む',
+      subject,
       FROM: name,
       mail: '',
       MESSAGE: message, // txtから取得したメッセージを使用
       Cookie: localCookie
     }
 
-    const response = await fetch(`/api/thread/${params.dat}`, {
+    const response = await fetch(`/api/thread/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -48,19 +48,19 @@ export const PostText = () => {
     const text = await response?.text()
     console.log(text)
 
-    // 書き込み確認画面に遷移したら
-    if (text && (text.includes('書き込み確認') || text.includes('2ch_X:cookie'))) {
-      setResponse(text)
-      setOpen(true)
-      // cookieを取得
-      const cookie = response?.headers?.get('Cookie')
-      if (cookie) {
-        localStorage.setItem('Cookie', cookie)
-      }
-    } else {
-      setMessage('')
-      router.refresh()
-    }
+    // // 書き込み確認画面に遷移したら
+    // if (text && (text.includes('書き込み確認') || text.includes('2ch_X:cookie'))) {
+    //   setResponse(text)
+    //   setOpen(true)
+    //   // cookieを取得
+    //   const cookie = response?.headers?.get('Cookie')
+    //   if (cookie) {
+    //     localStorage.setItem('Cookie', cookie)
+    //   }
+    // } else {
+    //   setMessage('')
+    //   router.refresh()
+    // }
   }
 
   const handleOk = () => {
@@ -70,17 +70,26 @@ export const PostText = () => {
 
   return <>
     <div className={'mb-4'}>
+      <textarea
+        className={'rounded block w-full bg-transparent border p-1 mb-2'}
+        name="subject"
+        id="subject"
+        placeholder={'スレタイ'}
+        rows={1}
+        value={subject}
+        onChange={e => setSubject(e.target.value)}
+      />
       <input
-        className={'rounded bg-transparent border mb-1'}
+        className={'rounded block bg-transparent border mb-1 px-1'}
         value={name}
+        placeholder={'名前'}
         onChange={e => setName(e.target.value)}
         type="text"
       />
       <textarea
-        className={'rounded w-full bg-transparent border p-2'}
+        className={'rounded block w-full bg-transparent border p-2 mb-2'}
         name="txt"
         id="txt"
-        cols={30}
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
