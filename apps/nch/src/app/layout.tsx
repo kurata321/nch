@@ -20,11 +20,11 @@ export default function RootLayout ({
   return (
     <html lang="ja">
     <body className={inter.className}>
-      <h1 className="text-4xl font-bold px-12 pt-12">
+      <h1 className="text-4xl font-bold px-4 pt-4 sm:px-12 sm:pt-12">
         なんでも実況E
       </h1>
       <main className="sm:flex">
-        <div className={'pl-12 pt-6 sm:pb-12 min-w-120'}>
+        <div className={'sm:pl-12 sm:pt-6 pl-4 pt-4 sm:pb-12 min-w-120'}>
           <Suspense
             fallback={<div className={'grid place-content-center'}><Loader2 className={'animate-spin'} /></div>}
           >

@@ -87,11 +87,11 @@ export const PostText = () => {
       <button className={'border rounded px-2'} onClick={onPost}>post</button>
     </div>
     <Dialog open={open} onOpenChange={x => setOpen(x)}>
-      <DialogContent>
+      <DialogContent className={'overflow-auto max-h-[80vh]'}>
         <DialogHeader>
           <DialogTitle>書き込み確認</DialogTitle>
-          <DialogDescription dangerouslySetInnerHTML={{ __html: response }}></DialogDescription>
         </DialogHeader>
+        <DialogDescription dangerouslySetInnerHTML={{ __html: response }}></DialogDescription>
         <DialogFooter>
           <Button onClick={handleOk}>OK</Button>
         </DialogFooter>
