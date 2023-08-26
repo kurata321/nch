@@ -21,7 +21,7 @@ export const Thread = async ({ dat }: { dat: string }) => {
     {thread?.map((x, i) => (
       <div key={x[2]} className={'mb-2'}>
         <div className={'text-sm dark:text-slate-300 light:text-slate-500'}>
-          {i + 1}. <span className={'font-bold'}>{x[0]}</span> {x[2]}</div>
+          {i + 1}. <span className={'font-bold'}>{decode(x[0])}</span> {x[2]}</div>
         <div className={'whitespace-pre-wrap break-words'}>
           {
             decode(x[3])
