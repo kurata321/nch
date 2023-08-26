@@ -24,7 +24,7 @@ export default function RootLayout ({
         なんでも実況E
       </h1>
       <main className="sm:flex">
-        <div className={'sm:pl-12 sm:pt-6 pl-4 pt-4 sm:pb-12 min-w-120 top-0 sm:sticky h-full'}>
+        <div className={'sm:pl-12 sm:pt-6 pl-4 pt-4 sm:pb-12 min-w-200 top-0 sm:sticky h-full'}>
           <Suspense
             fallback={<div className={'grid place-content-center'}><Loader2 className={'animate-spin'} /></div>}
           >
@@ -32,7 +32,7 @@ export default function RootLayout ({
           </Suspense>
           {/*<PostThread />*/}
         </div>
-        <div className={'grow-0'}>
+        <div className={'basis-[fit-content]'}>
           {children}
         </div>
       </main>
