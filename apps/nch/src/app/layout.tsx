@@ -1,6 +1,4 @@
 import './globals.css'
-import { ModeToggle } from '@/app/ModeToggle'
-import { PostThread } from '@/app/PostThread'
 import Threads from '@/app/Threads'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { clsx } from 'clsx'

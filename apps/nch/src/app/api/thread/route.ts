@@ -1,6 +1,5 @@
-import iconv from 'iconv-lite'
 import { NextRequest, NextResponse } from 'next/server'
-import fetch, { Response } from 'node-fetch'
+import { Response } from 'node-fetch'
 
 export const runtime = 'edge'
 

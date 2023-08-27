@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog'
-import { PenLine, PenSquare } from 'lucide-react'
+import { PenLine } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import fetch from 'node-fetch'
 import { useState } from 'react'

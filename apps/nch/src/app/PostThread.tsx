@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import fetch from 'node-fetch'
 import { useState } from 'react'
 
