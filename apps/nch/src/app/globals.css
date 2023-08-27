@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --border: 214.3 31.8% 71.4%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --foreground-rgb: 200, 200, 200;
     --background-start-rgb: 80, 80, 80;
     --background-end-rgb: 70, 70, 70;
+    --border: 227.2 32.6% 71.4%;
   }
 }
 
@@ -28,7 +30,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 40 0% 90%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -52,16 +54,16 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 214.3 31.8% 81.4%;
+    --input: 214.3 31.8% 81.4%;
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 31%;
+    --foreground: 210 40% 88%;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -95,13 +97,6 @@
     @apply border-border;
   }
   body {
-    @apply min-h-screen bg-background text-foreground;
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    @apply min-h-screen bg-background　text-foreground;
   }
 }

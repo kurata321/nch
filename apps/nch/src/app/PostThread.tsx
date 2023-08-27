@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
-  DialogDescription, DialogFooter,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
 } from '@/components/ui/dialog'
 import { useParams, useRouter } from 'next/navigation'
 import fetch from 'node-fetch'
@@ -32,15 +33,15 @@ export const PostThread = () => {
       FROM: name,
       mail: '',
       MESSAGE: message, // txtから取得したメッセージを使用
-      Cookie: localCookie
+      Cookie: localCookie,
     }
 
     const response = await fetch(`/api/thread/`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }).catch((e) => {
       console.log(e)
     })
@@ -68,43 +69,49 @@ export const PostThread = () => {
     onPost()
   }
 
-  return <>
-    <div className={'mb-4'}>
-      <textarea
-        className={'rounded block w-full bg-transparent border p-1 mb-2'}
-        name="subject"
-        id="subject"
-        placeholder={'スレタイ'}
-        rows={1}
-        value={subject}
-        onChange={e => setSubject(e.target.value)}
-      />
-      <input
-        className={'rounded block bg-transparent border mb-1 px-1'}
-        value={name}
-        placeholder={'名前'}
-        onChange={e => setName(e.target.value)}
-        type="text"
-      />
-      <textarea
-        className={'rounded block w-full bg-transparent border p-2 mb-2'}
-        name="txt"
-        id="txt"
-        value={message}
-        onChange={e => setMessage(e.target.value)}
-      />
-      <button className={'border rounded px-2'} onClick={onPost}>post</button>
-    </div>
-    <Dialog open={open} onOpenChange={x => setOpen(x)}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>書き込み確認</DialogTitle>
-          <DialogDescription dangerouslySetInnerHTML={{ __html: response }}></DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <Button onClick={handleOk}>OK</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  </>
+  return (
+    <>
+      <div className={'mb-4'}>
+        <textarea
+          className={'rounded block w-full bg-transparent border p-1 mb-2'}
+          name="subject"
+          id="subject"
+          placeholder={'スレタイ'}
+          rows={1}
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+        />
+        <input
+          className={'rounded block bg-transparent border mb-1 px-1'}
+          value={name}
+          placeholder={'名前'}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+        />
+        <textarea
+          className={'rounded block w-full bg-transparent border p-2 mb-2'}
+          name="txt"
+          id="txt"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button className={'border rounded px-2'} onClick={onPost}>
+          post
+        </button>
+      </div>
+      <Dialog open={open} onOpenChange={(x) => setOpen(x)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>書き込み確認</DialogTitle>
+            <DialogDescription
+              dangerouslySetInnerHTML={{ __html: response }}
+            ></DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button onClick={handleOk}>OK</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
+  )
 }

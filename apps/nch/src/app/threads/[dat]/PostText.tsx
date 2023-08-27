@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog'
+import { PenLine, PenSquare } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import fetch from 'node-fetch'
 import { useState } from 'react'
@@ -84,7 +85,10 @@ export const PostText = () => {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <button className={'border rounded px-2'} onClick={onPost}>post</button>
+      <button className={'border rounded px-1.5 py-0.5 flex items-center text-sm'} onClick={onPost}>
+        <PenLine size={16} />
+        書き込む
+      </button>
     </div>
     <Dialog open={open} onOpenChange={x => setOpen(x)}>
       <DialogContent className={'overflow-auto max-h-[80vh]'}>

@@ -14,9 +14,7 @@ const fetchUsers = async () => {
   return data.split('\n').map((sread) => sread.split('<>'))
 }
 
-export default async function Threads () {
+export default async function Threads() {
   const threads = await fetchUsers()
-  return (
-    <ThreadsItem threads={threads} />
-  )
+  return <ThreadsItem threads={threads} />
 }
