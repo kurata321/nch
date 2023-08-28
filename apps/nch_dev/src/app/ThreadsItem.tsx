@@ -22,6 +22,7 @@ export default function ThreadsItem({ threads }: { threads: string[][] }) {
             className={clsx(params.dat === thread[0] && 'bg-gray-200')}
             href={`/threads/${thread[0]}`}
             key={thread[0]}
+            prefetch={false}
           >
             <div
               key={thread[0]}
