@@ -1,6 +1,7 @@
 import './globals.css'
 import Threads from '@/app/Threads'
 import { ThemeProvider } from '@/components/providers/theme-provider'
+import { PostThread } from './PostThread'
 import { clsx } from 'clsx'
 import { Loader2 } from 'lucide-react'
 import { Inter } from 'next/font/google'

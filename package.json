@@ -1,0 +1,21 @@
+{
+  "name": "nch",
+  "private": true,
+  "version": "1.0.0",
+  "description": "5ch browsing",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurata321/nch.git"
+  },
+  "author": "kurata321",
+  "bugs": {
+    "url": "https://github.com/kurata321/nch/issues"
+  }
+}

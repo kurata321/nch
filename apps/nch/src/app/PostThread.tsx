@@ -71,9 +71,9 @@ export const PostThread = () => {
 
   return (
     <>
-      <div className={'mb-4'}>
+      <div className={'mb-4 flex gap-2 mt-4 px-1 py-0.5'}>
         <textarea
-          className={'rounded block w-full bg-transparent border p-1 mb-2'}
+          className={'rounded block w-full bg-transparent border'}
           name="subject"
           id="subject"
           placeholder={'スレタイ'}
@@ -81,20 +81,20 @@ export const PostThread = () => {
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
-        <input
-          className={'rounded block bg-transparent border mb-1 px-1'}
-          value={name}
-          placeholder={'名前'}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-        />
-        <textarea
-          className={'rounded block w-full bg-transparent border p-2 mb-2'}
-          name="txt"
-          id="txt"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
+        {/*<input*/}
+        {/*  className={'rounded block bg-transparent border mb-1 px-1'}*/}
+        {/*  value={name}*/}
+        {/*  placeholder={'名前'}*/}
+        {/*  onChange={(e) => setName(e.target.value)}*/}
+        {/*  type="text"*/}
+        {/*/>*/}
+        {/*<textarea*/}
+        {/*  className={'rounded block w-full bg-transparent border p-2 mb-2'}*/}
+        {/*  name="txt"*/}
+        {/*  id="txt"*/}
+        {/*  value={message}*/}
+        {/*  onChange={(e) => setMessage(e.target.value)}*/}
+        {/*/>*/}
         <button className={'border rounded px-2'} onClick={onPost}>
           post
         </button>
