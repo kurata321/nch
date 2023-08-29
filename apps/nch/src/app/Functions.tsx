@@ -1,12 +1,52 @@
 'use client'
 
-import { RotateCw } from 'lucide-react'
+import { ArrowDownToLine, ArrowUpToLine, RotateCw } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '../components/ui/button'
 import { ModeToggle } from './ModeToggle'
 
 export const runtime = 'edge'
+
+const ScrollToButton = () => {
+  const [isAtBottom, setIsAtBottom] = useState(false)
+
+  const handleScroll = () => {
+    // 現在のスクロール位置を取得
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const windowHeight = window.innerHeight
+    const fullHeight = document.documentElement.scrollHeight
+
+    setIsAtBottom(scrollTop + windowHeight >= fullHeight)
+  }
+
+  useEffect(() => {
+    // スクロールイベントを追加
+    window.addEventListener('scroll', handleScroll)
+    // コンポーネントのクリーンアップ
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const handleScrollTo = () => {
+    if (typeof window !== 'undefined') {
+      const target = isAtBottom ? 0 : document.body.scrollHeight
+      window.scrollTo({ top: target, behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <Button
+      className={''}
+      variant={'outline'}
+      size={'icon'}
+      onClick={handleScrollTo}
+    >
+      {isAtBottom ? <ArrowUpToLine size={16} /> : <ArrowDownToLine size={16} />}
+    </Button>
+  )
+}
 
 const RefreshButton = () => {
   const [isRotating, setIsRotating] = useState(false) // 回転状態を保持
@@ -35,6 +75,7 @@ export const Functions = () => {
       <div className={'flex gap-2'}>
         <ModeToggle />
         <RefreshButton />
+        <ScrollToButton />
       </div>
     </div>
   )
