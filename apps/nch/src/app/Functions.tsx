@@ -6,8 +6,6 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../components/ui/button'
 import { ModeToggle } from './ModeToggle'
 
-export const runtime = 'edge'
-
 const ScrollToButton = () => {
   const [isAtBottom, setIsAtBottom] = useState(false)
 

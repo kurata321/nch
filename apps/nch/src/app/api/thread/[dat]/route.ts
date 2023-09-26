@@ -49,7 +49,7 @@ export async function POST (request: NextRequest, query: NextResponse) {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Connection': 'close',
       'Credentials': 'include',
-      'User-Agent': `Monazilla/1.00 ${userAgent}`,
+      'User-Agent': `Monazilla/1.00 nch/${userAgent}`,
       'Cookie': Cookie,
       'Content-length': formData.toString().length.toString(),
       'X-Aikotoba-edge': 'edge',

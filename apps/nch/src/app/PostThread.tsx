@@ -27,7 +27,7 @@ export const PostThread = () => {
     const localCookie = localStorage.getItem('Cookie')
     const data = {
       bbs: 'edge',
-      time: '1690478222',
+      time: Math.floor(new Date().getTime() / 1000),
       submit: '書き込む',
       subject,
       FROM: name,
